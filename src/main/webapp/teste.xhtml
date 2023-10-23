@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Teste Matheus</title>
+</h:head>
+<f:view>
+
+	<p:importEnum type="br.com.matchsant.model.enums.Turno" var="Turno"
+		allSuffix="ALL_ENUM_VALUES" />
+
+	<h:outputLabel value="Hellow, World!" />
+	<br />
+	<h:outputLabel value="#{cadastrarEstudanteBean.estudante.nome}" />
+	<br />
+	<h:outputLabel value="#{cadastrarEstudanteBean.estudante['nome']}" />
+	<br />
+	<h:outputLabel value='#{cadastrarEstudanteBean.estudante["sobreNome"]}' />
+	<br />
+	<h:outputLabel
+		value='#{cadastrarEstudanteBean.estudante.nota1 eq cadastrarEstudanteBean.estudante.nota2}' />
+	<br />
+	<h:outputLabel
+		value='#{cadastrarEstudanteBean.estudante.nota1 == cadastrarEstudanteBean.estudante.nota2}' />
+	<br />
+	<h:outputLabel
+		value='#{cadastrarEstudanteBean.estudante.nota1 == cadastrarEstudanteBean.estudante.nota2 and cadastrarEstudanteBean.
+		estudante.nome.equalsIgnoreCase("Matheus")}' />
+	<br />
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.estudante.nota1 le cadastrarEstudanteBean.estudante.nota2}" />
+	<br />
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.estudante.nota1 eq cadastrarEstudanteBean.estudante.nota2 ? 'teste' : 'não teste'}" />
+	<br />
+	<h:outputLabel value="#{cadastrarEstudanteBean.estudante.nota1 = 40}" />
+	<br />
+	<h:outputLabel value="#{cadastrarEstudanteBean.estudante.nota1}" />
+	<br />
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.estudante.nome += ' meuSobreNome'}" />
+	<br />
+	<h:outputLabel value="#{cadastrarEstudanteBean.estudante.nome}" />
+	<br />
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.estudante.turno eq Turno.MATUTINO}" />
+	<!-- Palavras reservadas: and, or, not !, eq, ne !=, lt, gt, le, ge, true, false
+		null, instanceof, empty, not empty, div e mod -->
+
+	<br />
+	<br />
+	<h:outputLabel value="### ARRAYS" />
+	<!-- Arrays -->
+	<br />
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.arraysStrings[0]} #{cadastrarEstudanteBean.arraysStrings[1]} 
+		#{cadastrarEstudanteBean.arraysStrings[2]}" />
+	<br />
+	<!-- ui:repeat array -->
+	<ui:repeat var="nome" value="#{cadastrarEstudanteBean.arraysStrings}">
+		<h:outputLabel value="#{nome}" />
+		<br />
+	</ui:repeat>
+
+	<br />
+	<h:outputLabel value="### LIST" />
+	<br />
+	<!-- List -->
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.listStrings.get(0)} #{cadastrarEstudanteBean.listStrings.get(1)} #{cadastrarEstudanteBean.listStrings.get(2)}" />
+	<!-- ui:repeat list -->
+	<br />
+	<ui:repeat var="nome" value="#{cadastrarEstudanteBean.listStrings}">
+		<h:outputLabel value="#{nome}" />
+		<br />
+	</ui:repeat>
+
+	<br />
+	<h:outputLabel value="### SET" />
+	<br />
+	<!-- Set -->
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.setStrings.toArray()[0]} #{cadastrarEstudanteBean.setStrings.toArray()[1]} #{cadastrarEstudanteBean.setStrings.toArray()[2]}" />
+	<!-- ui:repeat list -->
+	<br />
+	<ui:repeat var="nome"
+		value="#{cadastrarEstudanteBean.setStrings.toArray()}">
+		<h:outputLabel value="#{nome}" />
+		<br />
+	</ui:repeat>
+	
+	<br />
+	<h:outputLabel value="### MAP" />
+	<br />
+	<!-- Map -->
+	<h:outputLabel
+		value="#{cadastrarEstudanteBean.mapStrings.get('Nome')}" />
+	<!-- ui:repeat list -->
+	<br />
+	<ui:repeat var="nome"
+		value="#{cadastrarEstudanteBean.mapStrings}">
+		<h:outputLabel value="#{nome}" />
+		<br />
+	</ui:repeat>
+</f:view>
+</html>
