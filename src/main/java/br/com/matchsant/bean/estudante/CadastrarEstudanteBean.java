@@ -24,6 +24,26 @@ public class CadastrarEstudanteBean implements Serializable {
 	private Set<String> setStrings = new HashSet<>(Arrays.asList("Jorge", "Felipe", "Pedro", "Back-End"));
 	private Map<String, String> mapStrings = Map.of("Nome", "Matheus", "Idade", "21", "Email", "matheuszin");
 
+	public void executar() {
+		System.out.println("Fazendo uma busca");
+		System.out.println("Processando os dados");
+		System.out.println("Exibindo os dados");
+	}
+
+	public void executar(String parametro) {
+		System.out.println("Fazendo uma busca com parametro: " + parametro);
+		System.out.println("Processando os dados com parametro: " + parametro);
+		System.out.println("Exibindo os dados com parametro: " + parametro);
+	}
+
+	public String executarComRetorno(String parametro) {
+		return "Teste retorno " + parametro;
+	}
+
+	public String irParaOutraPagina(String parametro) {
+		return "cadastrar-estudante?faces-redirect=true";
+	}
+
 	public Estudante getEstudante() {
 		return estudante;
 	}

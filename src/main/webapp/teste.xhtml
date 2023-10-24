@@ -93,19 +93,44 @@
 		<h:outputLabel value="#{nome}" />
 		<br />
 	</ui:repeat>
-	
+
 	<br />
 	<h:outputLabel value="### MAP" />
 	<br />
 	<!-- Map -->
-	<h:outputLabel
-		value="#{cadastrarEstudanteBean.mapStrings.get('Nome')}" />
+	<h:outputLabel value="#{cadastrarEstudanteBean.mapStrings.get('Nome')}" />
 	<!-- ui:repeat list -->
 	<br />
-	<ui:repeat var="nome"
-		value="#{cadastrarEstudanteBean.mapStrings}">
-		<h:outputLabel value="#{nome}" />
+	<ui:repeat var="entry"
+		value="#{cadastrarEstudanteBean.mapStrings.entrySet().toArray()}">
+		<h:outputLabel value="#{entry.key} - #{entry.value}" />
 		<br />
 	</ui:repeat>
+	<!-- Executando metódos -->
+	#{cadastrarEstudanteBean.executar()}
+	#{cadastrarEstudanteBean.executar('Teste1')}
+	#{cadastrarEstudanteBean.executar("Teste2")}
+	#{cadastrarEstudanteBean.executar(cadastrarEstudanteBean.estudante.nome)}
+	#{cadastrarEstudanteBean.executarComRetorno(cadastrarEstudanteBean.estudante.nome)}
+	<h:form>
+		<h:commandButton value="Ir para próxima página"
+			actionListener="#{cadastrarEstudanteBean.irParaOutraPagina('teste')}" />
+		<h:commandButton value="Soltar Mágica" onclick="fazMagica('Testeeee')" />
+	</h:form>
+
+	<!-- Imprimindo CSS com EL -->
+	<br />
+	<ui:repeat var="nome" value="#{cadastrarEstudanteBean.listStrings}"
+		varStatus="status">
+		#{status.index} - 
+		<h:outputLabel value="#{nome}"
+			style="color: #{status.index mod 2 == 0 ? 'red' : 'blue'}" />
+		<br />
+	</ui:repeat>
+	<script type="text/javascript">
+		function fazMagica(magica) {
+			alert(magica);
+		}
+	</script>
 </f:view>
 </html>
