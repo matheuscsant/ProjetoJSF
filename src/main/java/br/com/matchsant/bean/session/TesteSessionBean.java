@@ -1,4 +1,4 @@
-package br.com.matchsant.bean.request;
+package br.com.matchsant.bean.session;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,22 +7,28 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Named;
 
 @Named
-@RequestScoped
-public class TesteRequestBean implements Serializable {
+@SessionScoped
+public class TesteSessionBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private List<String> personagens;
-	private List<String> personagemSelecinado = new ArrayList<>();
+	private List<String> personagemSelecinado = new ArrayList<String>();
 
 	@PostConstruct
 	public void init() {
-		System.out.println("Entrou no PostConstruct do RequestScoped");
-		personagens = Arrays.asList("Goku", "Ben 10", "Kurama", "Naruto");
+		System.out.println("Entrou no PostConstruct do SessionScoped");
+		personagens = Arrays.asList("Vegeta", "Gaara", "Madara", "Alien");
+	}
+
+	public String logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "session?faces-redirect=true";
 	}
 
 	public void selecionarPersonagem() {
