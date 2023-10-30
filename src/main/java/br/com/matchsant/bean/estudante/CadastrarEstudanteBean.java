@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import br.com.matchsant.model.Estudante;
+import jakarta.el.LambdaExpression;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 
@@ -23,6 +25,45 @@ public class CadastrarEstudanteBean implements Serializable {
 	private List<String> listStrings = Arrays.asList("Matheus", "Santos", "Gabriel", "Front-End");
 	private Set<String> setStrings = new HashSet<>(Arrays.asList("Jorge", "Felipe", "Pedro", "Back-End"));
 	private Map<String, String> mapStrings = Map.of("Nome", "Matheus", "Idade", "21", "Email", "matheuszin");
+	private boolean mostrarNota;
+	private boolean mostrarLink;
+
+	public void calcularCubo(LambdaExpression le, long value) {
+		long result = (long) le.invoke(FacesContext.getCurrentInstance().getELContext(), value);
+		System.out.println("Resultado do cubo tio: " + result);
+	}
+
+	public void exibirLink() {
+		this.mostrarLink = true;
+	}
+
+	public void esconderLink() {
+		this.mostrarLink = false;
+	}
+
+	public boolean isMostrarLink() {
+		return mostrarLink;
+	}
+
+	public void setMostrarLink(boolean mostrarLink) {
+		this.mostrarLink = mostrarLink;
+	}
+
+	public void exibirNotas() {
+		this.mostrarNota = true;
+	}
+
+	public void esconderNotas() {
+		this.mostrarNota = false;
+	}
+
+	public boolean isMostrarNota() {
+		return mostrarNota;
+	}
+
+	public void setMostrarNota(boolean mostrarNota) {
+		this.mostrarNota = mostrarNota;
+	}
 
 	public void executar() {
 		System.out.println("Fazendo uma busca");
