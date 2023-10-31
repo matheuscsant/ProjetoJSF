@@ -7,22 +7,26 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-	<title>Teste Request</title>
+	<title>Teste Session</title>
+	<f:metadata>
+		<f:viewAction action="#{testeConversationBean.init()}"/>
+	</f:metadata>
 </h:head>
 <h:body>
 	<h:form>
 		<h:outputText value="#{testeApplicationBean.categoriaList}" />
-		<h:outputText value="#{testeRequestBean.personagemSelecinado}" />
+		<h:outputText value="#{testeConversationBean.personagemSelecinado}" />
 		<br />
 		<h:commandButton value="Selecionar personagem"
-			actionListener="#{testeRequestBean.selecionarPersonagem()}" />
+			actionListener="#{testeConversationBean.selecionarPersonagem()}" />
 		<h:commandButton value="Selecionar personagem Forward"
-			actionListener="#{testeRequestBean.selecionarPersonagem()}" action="cadastrar-estudante"/>
+			actionListener="#{testeConversationBean.selecionarPersonagem()}"
+			action="conversation2" />
 		<h:commandButton value="Selecionar personagem Redirect"
-			actionListener="#{testeRequestBean.selecionarPersonagem()}" action="cadastrar-estudante?faces-redirect=true"/>
-		<h:commandButton value="Trocar lista de categorias"
-			actionListener="#{testeApplicationBean.mudarList()}" />
+			actionListener="#{testeConversationBean.selecionarPersonagem()}"
+			action="conversation2?faces-redirect=true" />
+		<h:commandButton value="Finalizar conversation"
+			actionListener="#{testeConversationBean.endConversation()}"/>
 	</h:form>
-	
 </h:body>
 </html>
