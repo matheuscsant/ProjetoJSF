@@ -35,10 +35,11 @@ public class TesteConversationBean implements Serializable {
 		}
 	}
 
-	public void endConversation() {
+	public String endConversation() {
 		if (!conversation.isTransient()) {
 			conversation.end();
 		}
+		return "conversation?faces-redirect=true";
 	}
 
 	public String logout() {
@@ -50,6 +51,22 @@ public class TesteConversationBean implements Serializable {
 		int index = ThreadLocalRandom.current().nextInt(3);
 		String personagem = personagens.get(index);
 		personagemSelecinado.add(personagem);
+	}
+
+	public List<String> getPersonagens() {
+		return personagens;
+	}
+
+	public void setPersonagens(List<String> personagens) {
+		this.personagens = personagens;
+	}
+
+	public Conversation getConversation() {
+		return conversation;
+	}
+
+	public void setConversation(Conversation conversation) {
+		this.conversation = conversation;
 	}
 
 	public List<String> getPersonagemSelecinado() {

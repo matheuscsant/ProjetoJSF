@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+<head>
+<title>Primeira página</title>
+</head>
+<body>
+	<h2>Primeira página de registro do FlowScoped</h2>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome" />
+			<h:inputText value="#{testeFlowBean.nome}" />
+			<h:outputLabel value="Sobrenome" />
+			<h:inputText value="#{testeFlowBean.sobrenome}" />
+			<h:commandButton value="Next"
+				action="registration2?faces-redirect=true" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
