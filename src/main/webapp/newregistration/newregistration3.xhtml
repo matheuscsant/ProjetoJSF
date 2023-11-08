@@ -10,15 +10,18 @@
 </head>
 <body>
 	<h:form>
-		<h2>Segunda página de registro do FlowScoped</h2>
+		<h2>Terceira página de registro do FlowScoped</h2>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="Endereço" />
-			<h:inputText value="#{testeFlowBean.endereco}" />
+			<h:outputLabel value="Nome: " />
+			<h:outputLabel value="#{testeFlowBuilderBean.nome}" />
+			<h:outputLabel value="Sobrenome: " />
+			<h:outputLabel value="#{testeFlowBuilderBean.sobrenome}" />
+			<h:outputLabel value="Endereço: " />
+			<h:outputLabel value="#{testeFlowBuilderBean.endereco}" />
 			<h:commandButton value="Back"
-				action="registration?faces-redirect=true" />
-			<h:commandButton value="Next"
-				action="registration3?faces-redirect=true" />
-			<h:commandButton value="Validar Pendencias" action="callPendencies" />
+				action="newregistration2?faces-redirect=true" />
+			<h:commandButton value="Save"
+				action="#{testeFlowBuilderBean.salvar()}" />
 		</h:panelGrid>
 	</h:form>
 </body>

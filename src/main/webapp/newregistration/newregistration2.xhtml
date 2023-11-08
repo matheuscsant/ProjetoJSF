@@ -9,15 +9,16 @@
 <title>Primeira página</title>
 </head>
 <body>
-	<h2>Primeira página de registro do FlowScoped</h2>
 	<h:form>
+		<h2>Segunda página de registro do FlowScoped</h2>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="Nome" />
-			<h:inputText value="#{testeFlowBean.nome}" />
-			<h:outputLabel value="Sobrenome" />
-			<h:inputText value="#{testeFlowBean.sobrenome}" />
+			<h:outputLabel value="Endereço" />
+			<h:inputText value="#{testeFlowBuilderBean.endereco}" />
+			<h:commandButton value="Back"
+				action="newregistration?faces-redirect=true" />
 			<h:commandButton value="Next"
-				action="registrationPage2" />
+				action="newregistration3?faces-redirect=true" />
+			<h:commandButton value="Validar Pendencias" action="callNewPendencies" />
 		</h:panelGrid>
 	</h:form>
 </body>

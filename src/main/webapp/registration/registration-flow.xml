@@ -4,11 +4,44 @@
 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
 	version="4.0">
 	<flow-definition id="registration">
+		<!-- Usa esse caso quando quer uma página de entrada diferente da convenção -->
+		<start-node>registrationInicio</start-node>
+		<view id="registrationInicio">
+			<vdl-document>/registration/registration.xhtml</vdl-document>
+		</view>
+
+		<!-- Switch para validar se o usuário pode ir para a próxima página -->
+		<switch id="registrationPage2">
+			<case>
+				<if>#{not empty testeFlowBean.nome and not empty testeFlowBean.sobrenome}</if>
+				<from-outcome>registration2</from-outcome>
+			</case>
+			<default-outcome>registrationInicio</default-outcome>
+		</switch>
+
+		<!-- Páginas de retorno -->
 		<flow-return id="exitToInicio">
 			<from-outcome>/teste.xhtml</from-outcome>
 		</flow-return>
 		<flow-return id="exitToRequest">
 			<from-outcome>/request.xhtml</from-outcome>
 		</flow-return>
+
+		<!-- Metódo que será executado independente do flow-return -->
+		<finalizer>#{testeFlowBean.salvar}</finalizer>
+
+<!-- 		<flow-call id="callPendencies">
+			<flow-reference>
+				<flow-id>pendencies</flow-id>
+			</flow-reference>
+			<outbound-parameter>
+				<name>userName</name>
+				<value>#{testeFlowBean.nome}</value>
+			</outbound-parameter>
+			<outbound-parameter>
+				<name>userSurname</name>
+				<value>#{testeFlowBean.sobrenome}</value>
+			</outbound-parameter>
+		</flow-call> -->
 	</flow-definition>
 </faces-config>
