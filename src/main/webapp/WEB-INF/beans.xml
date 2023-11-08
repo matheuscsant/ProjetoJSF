@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans bean-discovery-mode="annotated" version="4.0"
+<!-- Observação, aqui se tiver como annotaded o CDI não vai ler metódos de 
+	configurações caso a classe não esteja anotada, se tiver com all, ele lerá 
+	os metódos de configuração -> https://stackoverflow.com/questions/22178375/flow-scope-navigation-to-start-page-does-not-work -->
+<beans bean-discovery-mode="all" version="4.0"
 	xmlns="https://jakarta.ee/xml/ns/jakartaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd">
